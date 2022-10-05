@@ -9,7 +9,7 @@
   <xacro:property name="sin_PI_3" value="0.866"/>
 
 
-  <link name="gripper_base">
+  <link name="gripper_base_down">
     <inertial>
       <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
       <mass value="1.0" />
@@ -31,20 +31,20 @@
 
 
 
-  <link name="gripper_base_up">
+  <link name="gripper_base">
     <inertial>
       <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
       <mass value="1.0" />
       <inertia  ixx="0.001" ixy="0.0"  ixz="0.0"  iyy="0.001"  iyz="0.0"  izz="0.001" />
     </inertial>
     <visual>
-      <origin xyz="0.2275 0 -0.06" rpy="${-PI/2} 0 0"/>
+      <origin xyz="0.2275 0 0 " rpy="${-PI/2} 0 0"/>
    	<geometry>
             <mesh filename="package://gripper_description/meshes/gripper_base_up.stl" scale="0.001 0.001 0.001"/>
         </geometry>
     </visual>
     <collision>
-      <origin xyz="0.2275 0 -0.06" rpy="${-PI/2} 0 0"/>
+      <origin xyz="0.2275 0 0" rpy="${-PI/2} 0 0"/>
     <geometry>
             <mesh filename="package://gripper_description/meshes/gripper_base_up.stl" scale="0.001 0.001 0.001"/>
         </geometry>
@@ -53,46 +53,34 @@
 
 
 <joint name="flange" type="fixed">
-		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<origin xyz="0 0 0.06" rpy="0 0 0"/>
 		<parent link="gripper_base"/>
-		<child  link="gripper_base_up"/>
+		<child  link="gripper_base_down"/>
 </joint>
 
 
 
 <xacro:finger
 	name="hand_1"
-	parent="gripper_base">
+	parent="gripper_base_down">
 	 <origin xyz="0.0  -0.03 0.05" rpy="${-PI/2} 0 0"/>
 </xacro:finger>
 
 <xacro:finger
 	name="hand_2"
-	parent="gripper_base">
+	parent="gripper_base_down">
 	 <origin xyz="${0.03*sin_PI_3} ${0.03*cos_PI_3} 0.05" rpy="${-PI/2} 0 ${2*PI/3}"/>
 </xacro:finger>
 
 
 <xacro:finger
 	name="hand_3"
-	parent="gripper_base">
+	parent="gripper_base_down">
 	 <origin xyz="${-0.03*sin_PI_3} ${0.03*cos_PI_3} 0.05" rpy="${-PI/2} 0 ${-2*PI/3}"/>
 </xacro:finger>
 
 
 
-  <gazebo reference="gripper_base">
-    <material>Gazebo/Blue</material>
-  </gazebo>
-  <gazebo reference="gripper_finger_1">
-    <material>Gazebo/Red</material>
-  </gazebo>
-  <gazebo reference="gripper_finger_2">
-    <material>Gazebo/Yellow</material>
-  </gazebo>
-  <gazebo reference="gripper_finger_3">
-    <material>Gazebo/Orange</material>
-  </gazebo>
 
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
