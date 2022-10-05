@@ -59,6 +59,13 @@
 </joint>
 
 
+<joint name="fixed_ee_gripper" type="fixed">
+		<origin xyz="0 0 0.12" rpy="0 0 0"/>
+		<parent link="gripper_base"/>
+		<child  link="ee_gripper"/>
+</joint>
+<link name="ee_gripper"/>
+
 
 <xacro:finger
 	name="hand_1"
