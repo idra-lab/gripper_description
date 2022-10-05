@@ -5,10 +5,13 @@
    <xacro:include filename="$(find gripper_description)/urdf/finger.xacro"/>
 
   <xacro:property name="PI" value="3.1415926535897931"/>
+  <xacro:property name="cos_PI_3" value="0.5"/>
+  <xacro:property name="sin_PI_3" value="0.866"/>
+
 
   <link name="gripper_base">
     <inertial>
-      <origin xyz="0.055 0.055 0.055" rpy="0 0 0"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
       <mass value="1.0" />
       <inertia  ixx="0.01" ixy="0.0"  ixz="0.0"  iyy="0.01"  iyz="0.0"  izz="0.01" />
     </inertial>
@@ -60,20 +63,20 @@
 <xacro:finger
 	name="hand_1"
 	parent="gripper_base">
-	 <origin xyz="0.0 0.0 0.0" rpy="${-PI/2} 0 0"/>
+	 <origin xyz="0.0  -0.03 0.05" rpy="${-PI/2} 0 0"/>
 </xacro:finger>
 
 <xacro:finger
 	name="hand_2"
 	parent="gripper_base">
-	 <origin xyz="0.0 0.0 0.0" rpy="${-PI/2} 0 ${2*PI/3}"/>
+	 <origin xyz="${0.03*sin_PI_3} ${0.03*cos_PI_3} 0.05" rpy="${-PI/2} 0 ${2*PI/3}"/>
 </xacro:finger>
 
 
 <xacro:finger
 	name="hand_3"
 	parent="gripper_base">
-	 <origin xyz="0.0 0.0 0.0" rpy="${-PI/2} 0 ${-2*PI/3}"/>
+	 <origin xyz="${-0.03*sin_PI_3} ${0.03*cos_PI_3} 0.05" rpy="${-PI/2} 0 ${-2*PI/3}"/>
 </xacro:finger>
 
 
