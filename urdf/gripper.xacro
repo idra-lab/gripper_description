@@ -84,11 +84,6 @@
 
 
 
-  <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-        <robotNamespace>/gripper_controller</robotNamespace>
-    </plugin>
-  </gazebo>
 
     <transmission name="hand_1_joint_trans">
       <type>transmission_interface/SimpleTransmission</type>
