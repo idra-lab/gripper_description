@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
+ <xacro:include filename="$(find gripper_description)/urdf/finger_transmission.xacro" />
 
-
-<xacro:macro name="finger" params="name parent *origin">
+<xacro:macro name="finger" params="name parent transmission_hw_interface *origin">
 
   <joint name="${name}_joint" type="revolute">
     <parent link="${parent}"/>
@@ -33,6 +33,9 @@
         </geometry>
      </collision>
   </link>
+
+  <xacro:finger_transmission name="${name}" hw_interface="${transmission_hw_interface}" />
+
 
 </xacro:macro>
 </robot>
