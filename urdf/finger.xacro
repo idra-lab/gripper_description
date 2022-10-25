@@ -3,8 +3,10 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
  <xacro:include filename="$(find gripper_description)/urdf/finger_transmission.xacro" />
 
-<xacro:macro name="finger" params="name parent transmission_hw_interface *origin">
+<xacro:macro name="finger" params="name parent transmission_hw_interface gripper_active *origin">
 
+<xacro:if value="${gripper_active}">
+  <xacro:finger_transmission name="${name}" hw_interface="${transmission_hw_interface}" />
   <joint name="${name}_joint" type="revolute">
     <parent link="${parent}"/>
     <child link="${name}_link"/>
@@ -12,6 +14,15 @@
     <xacro:insert_block name="origin"/>
     <limit effort="50" velocity="10.0" lower="0" upper="3.14" />
   </joint>
+</xacro:if>
+
+<xacro:unless value="${gripper_active}">
+  <joint name="${name}_joint" type="fixed">
+    <parent link="${parent}"/>
+    <child link="${name}_link"/>
+    <xacro:insert_block name="origin"/>
+  </joint>
+</xacro:unless>
 
 
   <link name="${name}_link">
@@ -34,7 +45,6 @@
      </collision>
   </link>
 
-  <xacro:finger_transmission name="${name}" hw_interface="${transmission_hw_interface}" />
 
 
 
