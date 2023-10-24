@@ -78,7 +78,7 @@
 		</link>
 
 
-		<joint name="robotiq_85_left_knuckle_joint" type="revolute">
+		<joint name="hand_1_joint" type="revolute">
 			<parent link="robotiq_85_base_link"/>
 			<child link="robotiq_85_left_knuckle_link"/>
 			<axis xyz="0 0 1"/>
@@ -107,7 +107,7 @@
 			<axis xyz="0 0 1"/>
 			<origin rpy="0.0 0.0 0.0" xyz="0.05490451627 -0.03060114443 0.0"/>
 			<limit lower="-3.14" upper="3.14" velocity="100.0" effort="50"/>
-			<mimic joint="robotiq_85_left_knuckle_joint"/>
+			<mimic joint="hand_1_joint"/>
 			<dynamics damping="100.0" />
 		</joint>
 
@@ -121,7 +121,7 @@
 			<material>Gazebo/Grey</material>
 		</gazebo>
 		<xacro:mimic_joint_plugin_gazebo name_prefix="{prefix}robotiq_85_right_knuckle_joint"
-			parent_joint="robotiq_85_left_knuckle_joint" mimic_joint="robotiq_85_right_knuckle_joint"
+			parent_joint="hand_1_joint" mimic_joint="robotiq_85_right_knuckle_joint"
 			multiplier="1.0" max_effort="10.0" />
 
 
@@ -227,11 +227,11 @@
 			<axis xyz="0 0 1"/>
 			<origin xyz="0.06142 0.0127 0" rpy="${pi} 0.0 0.0" />
 			<limit lower="-3.14" upper="3.14" velocity="100.0" effort="0.1"/>
-			<mimic joint="robotiq_85_left_knuckle_joint" offset="0"/>
+			<mimic joint="hand_1_joint" offset="0"/>
 		</joint>
 
 		<xacro:mimic_joint_plugin_gazebo name_prefix="robotiq_85_left_inner_knuckle_joint"
-			parent_joint="robotiq_85_left_knuckle_joint" mimic_joint="robotiq_85_left_inner_knuckle_joint"
+			parent_joint="hand_1_joint" mimic_joint="robotiq_85_left_inner_knuckle_joint"
 			multiplier="1.0" max_effort="10.0" />
 
 		<joint name="robotiq_85_right_inner_knuckle_joint" type="continuous">
@@ -240,11 +240,11 @@
 			<axis xyz="0 0 1"/>
 			<origin xyz="0.06142 -0.0127 0" rpy="0 0 0"/>
 			<limit lower="-3.14" upper="3.14" velocity="100.0" effort="0.1"/>
-			<mimic joint="robotiq_85_left_knuckle_joint" offset="0"/>
+			<mimic joint="hand_1_joint" offset="0"/>
 		</joint>
 
 		<xacro:mimic_joint_plugin_gazebo name_prefix="robotiq_85_right_inner_knuckle_joint"
-			parent_joint="robotiq_85_left_knuckle_joint" mimic_joint="robotiq_85_right_inner_knuckle_joint"
+			parent_joint="hand_1_joint" mimic_joint="robotiq_85_right_inner_knuckle_joint"
 			multiplier="1.0" max_effort="10.0" />
 
 		<link name="robotiq_85_left_inner_knuckle_link">
@@ -292,11 +292,11 @@
 			<axis xyz="0 0 1"/>
 			<origin xyz="0.04303959807 -0.03759940821 0.0" rpy="0.0 0.0 0.0"/>
 			<limit lower="-3.14" upper="3.14" velocity="100.0" effort="0.1"/>
-			<mimic joint="robotiq_85_left_knuckle_joint" multiplier="-1"/>
+			<mimic joint="hand_1_joint" multiplier="-1"/>
 		</joint>
 
 		<xacro:mimic_joint_plugin_gazebo name_prefix="robotiq_85_left_finger_tip_joint"
-			parent_joint="robotiq_85_left_knuckle_joint" mimic_joint="robotiq_85_left_finger_tip_joint"
+			parent_joint="hand_1_joint" mimic_joint="robotiq_85_left_finger_tip_joint"
 			multiplier="1.0" max_effort="10.0" />
 
 		<joint name="robotiq_85_right_finger_tip_joint" type="continuous">
@@ -305,11 +305,11 @@
 			<axis xyz="0 0 1"/>
 			<origin rpy="0.0 0.0 0.0" xyz="0.04303959807 -0.03759940821  0.0"/>
 			<limit lower="-3.14" upper="3.14" velocity="100.0" effort="0.1"/>
-			<mimic joint="robotiq_85_left_knuckle_joint" multiplier="-1"/>
+			<mimic joint="hand_1_joint" multiplier="-1"/>
 		</joint>
 
 		<xacro:mimic_joint_plugin_gazebo name_prefix="robotiq_85_right_finger_tip_joint"
-			parent_joint="robotiq_85_left_knuckle_joint" mimic_joint="robotiq_85_right_finger_tip_joint"
+			parent_joint="hand_1_joint" mimic_joint="robotiq_85_right_finger_tip_joint"
 			multiplier="1.0" max_effort="10.0" />
 
 		<link name="robotiq_85_left_finger_tip_link">
@@ -393,8 +393,8 @@
 			<arm>
 			   <arm_name>ur5</arm_name>
 			   <palm_link> wrist_3_link  </palm_link>
-			   <gripper_link> hand_1_link </gripper_link>
-			   <gripper_link> hand_2_link </gripper_link>
+			   <gripper_link> robotiq_85_left_finger_link </gripper_link>
+			   <gripper_link> robotiq_85_right_finger_link </gripper_link>
 			</arm>
 		       <forces_angle_tolerance>100</forces_angle_tolerance>
 		       <update_rate>500</update_rate>
