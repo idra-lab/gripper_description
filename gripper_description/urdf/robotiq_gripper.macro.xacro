@@ -370,7 +370,7 @@
 			<minDepth>0.001</minDepth>
 			<material>Gazebo/Grey</material>
 		</gazebo>
-		<xacro:robotiq_85_gripper_transmission prefix="" />
+		<xacro:robotiq_85_gripper_transmission  prefix="" transmission_hw_interface="${transmission_hw_interface}" />
 
 
 
