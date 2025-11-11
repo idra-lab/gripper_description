@@ -50,7 +50,7 @@
 	  </link>
 
 
-	<joint name="flange" type="fixed">
+	<joint name="flange_fixed_joint" type="fixed">
 			<origin xyz="0 0 0.06" rpy="0 0 0"/>
 			<parent link="gripper_base"/>
 			<child  link="gripper_base_down"/>
